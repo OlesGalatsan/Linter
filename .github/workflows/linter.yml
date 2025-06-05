@@ -15,7 +15,16 @@ jobs:
           fetch-depth: 0
 
       - name: Lint Code
-        uses: super-linter/super-linter@v7.1.0
+        uses: oxsecurity/megalinter/flavors/cupcake@v8.7.0
+        env:
+          DEFAULT_BRANCH: master
+          LINTER_RULES_PATH: .github/linters
+          VALIDATE_SHELL_SHFMT: true
+          LOG_LEVEL: ERROR
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Lint Code 2
+        uses: oxsecurity/megalinter/flavors/dotnet@v8.7.0
         env:
           DEFAULT_BRANCH: master
           LINTER_RULES_PATH: .github/linters
